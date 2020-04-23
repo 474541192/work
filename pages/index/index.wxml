@@ -1,0 +1,57 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view class="title">
+    <view class="input" hover-class="none" hover-stop-propagation="false">
+      <input  
+      placeholder="请输入内容" 
+      placeholder-class= "placeholder-class" 
+      value= "{{value}}" 
+      bindinput="getValue"
+      />
+    </view>
+    <button size="mini" bindtap = "add">添加</button>
+
+  </view>
+
+  <view class="content" hover-class="none" hover-stop-propagation="false">
+
+    <view class="pending" hover-class="none" hover-stop-propagation="false">
+      <view class="content_title" hover-class="none" hover-stop-propagation="false">
+        <view class="content_title_nav" hover-class="none" hover-stop-propagation="false">
+          <h2>进行中</h2>
+          <h2>{{pending.length}}</h2>
+        </view>
+      </view>
+      <view class="item" wx:for="{{pending}}" wx:key="index" >
+        <checkbox class="item_checkbox" bindtap = "change" data-item = "{{item}}" checked="{{item.checked}}" disabled="{{item.disabled}}"/>
+        <view class="item_input">
+          {{item.value}}
+        </view>
+        <button size="mini">删除</button>
+      </view>
+
+    </view>
+
+
+    <view class="pending" hover-class="none" hover-stop-propagation="false">
+      <view class="content_title" hover-class="none" hover-stop-propagation="false">
+        <view class="content_title_nav" hover-class="none" hover-stop-propagation="false">
+          <h2>已完成</h2>
+          <h2>{{finished.length}}</h2>
+        </view>
+      </view>
+      <view class="item" wx:for="{{finished}}" wx:key="index" >
+        <checkbox class="item_checkbox" bindtap = "change" data-item = "{{item}}"  checked="{{item.checked}}" />
+        <view class="item_input">
+          {{item.value}}
+        </view>
+        <button size="mini">删除</button>
+      </view>
+
+    </view>
+
+
+
+  </view>
+</view>
